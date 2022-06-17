@@ -21,20 +21,26 @@ public class Main {
             }
 
             else if (phoneBook.isName(input)) {
-                if (phoneBook.getContactByName(input).isEmpty()) {
+                if (phoneBook.getContactByName(input).contains(input)) {
+                    System.out.println(phoneBook.getContactByName(input));
+                }
+                else if (phoneBook.getContactByName(input).isEmpty()) {
                     System.out.println("Такого имени в телефонной книге нет." + "\n" + "Введите номер телефона для абонента:" + input);
                     String input1 = scanner.nextLine();
                     if (phoneBook.isNumber(input1)) {
                         phoneBook.addContact(input1,input);
                         System.out.println("Контакт сохранен!");
-                    }  else if (input1.isEmpty()) {
+                    } else if (input1.isEmpty()) {
                         System.out.println(WRONG_NAME);
                     }
                 }
             }
 
             else if (phoneBook.isNumber(input)) {
-                if (phoneBook.getContactByPhone(input).isEmpty()) {
+                if (phoneBook.getContactByPhone(input).contains(input)) {
+                    System.out.println(phoneBook.getContactByPhone(input));
+                }
+                else if (phoneBook.getContactByPhone(input).isEmpty()) {
                     System.out.println("Такого номера нет в телефонной книге." + "\n" + "Введите имя абонента для номера: " + input);
                     String input2 = scanner.nextLine();
                     if (phoneBook.isName(input2)) {

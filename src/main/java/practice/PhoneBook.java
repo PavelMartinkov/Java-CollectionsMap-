@@ -61,7 +61,7 @@ public class PhoneBook {
 
         for (Map.Entry<String, String> entry : treeMap.entrySet()) {
             if (entry.getValue().equals(name)) {
-                treeSet.add(entry.getValue() + " - " + entry.getKey());
+                 treeSet.add(entry.getValue() + " - " + entry.getKey());
                 for (String newSet : treeSet) {
                     System.out.println(newSet);
                 }
@@ -80,25 +80,22 @@ public class PhoneBook {
         for (Map.Entry<String, String> entry : treeMap.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            treeSet.add(value + " - " + key);
             if (treeMap1.containsKey(value)) {
                 for (Map.Entry<String, String> entry1 : treeMap1.entrySet()) {
-                    if (entry1.getKey().contains(value)) {
+                    if (entry1.getKey().equals(value)) {
                         treeMap1.put(entry1.getKey(), entry1.getValue() + ", " + key);
-//                    } else {
-//                        treeMap1.put(value, key);
                     }
                 }
+            } else {
+                treeMap1.put(value, key);
             }
-//            treeMap1.put(value, key);
         }
-        for (Map.Entry<String, String> entry1 : treeMap1.entrySet()) {
-            treeSet.add(entry1.getValue() + " - " + entry1.getKey());
+        for (Map.Entry<String, String> entry2 : treeMap1.entrySet()) {
+            treeSet.add(entry2.getKey() + " - " + entry2.getValue());
         }
-        for (String set : treeSet) {
-            System.out.println(set);
-        }
+
         return treeSet;
+
         // формат одного контакта "Имя - Телефон"
         // если контактов нет в телефонной книге - вернуть пустой TreeSet
     }
